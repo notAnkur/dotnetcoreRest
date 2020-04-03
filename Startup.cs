@@ -25,7 +25,7 @@ namespace CommandApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CommandContext>
-                (opt => opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                (opt => opt.UseNpgsql(Configuration["Data:CommandApiConnection:ConnectionString"]));
             services.AddMvc(option => option.EnableEndpointRouting=false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             
         }
